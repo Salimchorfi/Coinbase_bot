@@ -2,13 +2,12 @@ require 'coinbase/wallet'
 require 'json'
 require 'open-uri'
 require 'uri'
-require 'figaro'
 
 class CoinbaseController < ApplicationController
 
   @@client = Coinbase::Wallet::Client.new(api_key: ENV["API_KEY"],
-                                      api_secret: ENV["API_SECRET"],
-                                      CB_VERSION: ENV["CB_VERSION"])
+                                       api_secret: ENV["API_SECRET"],
+                                       CB_VERSION: ENV["CB_VERSION"])
 
   def transaction
     transactions = []
