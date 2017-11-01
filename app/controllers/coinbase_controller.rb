@@ -5,9 +5,9 @@ require 'uri'
 
 class CoinbaseController < ApplicationController
 
-  @@client = Coinbase::Wallet::Client.new(api_key: 'HX1AZ5b61nTj5bzg',
-                                           api_secret: '0acgSsP9cAqhCKgYqF8kKNr1VgSHlciT',
-                                           CB_VERSION: '2017-06-16')
+  @@client = Coinbase::Wallet::Client.new(api_key: ENV["ACCESS_TOKEN"],
+                                           api_secret: ENV["ACCESS_TOKEN"],
+                                           CB_VERSION: ENV["ACCESS_TOKEN"])
 
   def transaction
     transactions = []
