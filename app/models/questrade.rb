@@ -1,0 +1,4 @@
+class Questrade < ApplicationRecord
+
+
+end
