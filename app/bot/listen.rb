@@ -15,12 +15,29 @@ Bot.on :message do |message|
   #TOTAL --------------------
   if command.include? 'total'
 
-      Bot.deliver({
-        recipient: message.sender,
-        message: {
-          text: "The total value of your portfolio is #{CoinbaseController.new.total_value.to_i}$, a gain of #{CoinbaseController.new.total_gain.to_i}%"
-        }
-      }, access_token: ENV["ACCESS_TOKEN"])
+    #TOTAL
+    Bot.deliver({
+      recipient: message.sender,
+      message: {
+        text: "The total value of your savings is #{CoinbaseController.new.total_value.to_i + QuestradeController.new.combined_balance.to_i}$"
+      }
+    }, access_token: ENV["ACCESS_TOKEN"])
+
+    #COIN TOTAL
+    Bot.deliver({
+      recipient: message.sender,
+      message: {
+        text: "The total value of your coins portfolio is #{CoinbaseController.new.total_value.to_i}$, a gain of #{CoinbaseController.new.total_gain.to_i}%"
+      }
+    }, access_token: ENV["ACCESS_TOKEN"])
+
+    #QUESTRADE TOTAL
+    Bot.deliver({
+      recipient: message.sender,
+      message: {
+        text: "The total value of your questrade portfolio is #{QuestradeController.new.combined_balance.to_i}$"
+      }
+    }, access_token: ENV["ACCESS_TOKEN"])
 
   #LTC -----------------------
   elsif command.include? 'ltc'
