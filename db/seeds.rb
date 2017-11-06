@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+puts 'Creating initial refresh_token...'
+Questrade.create!({
+  token: ENV["REFRESH_TOKEN"],
+})
+
+puts 'Finished!'
